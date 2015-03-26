@@ -13,4 +13,4 @@ before_script:
   - python mysite/manage.py migrate --noinput
 script:
   - cd mysite
-  - python manage.py test --with-xunit --xunit-file=shippable/testresults/nosetests.xml
+  - python manage.py test --with-xunit --xunit-file=../shippable/testresults/nosetests.xml
