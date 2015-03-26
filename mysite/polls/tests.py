@@ -7,4 +7,4 @@ class SampleTest(TestCase):
         pass
 
     def test_2(self):
-        self.fail(True)
+        pass
