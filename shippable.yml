@@ -6,10 +6,11 @@ python:
 install:
   - pip install -r requirements.txt
 before_script:
+  - mkdir -p shippable/testresults
   - psql -c 'create database example_db;' -U postgres
   - echo "DATABASES['default']['USER'] = 'postgres'" >> mysite/mysite/settings.py
   - echo "DATABASES['default']['PASSWORD'] = None" >> mysite/mysite/settings.py
   - python mysite/manage.py migrate --noinput
 script:
   - cd mysite
-  - python manage.py test
+  - python manage.py test --with-xunit --xunit-file=shippable/testresults/nosetests.xml

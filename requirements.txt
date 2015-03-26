@@ -1,2 +1,4 @@
 Django==1.7.7
 psycopg2==2.6
+django-nose==1.3
+
