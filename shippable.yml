@@ -11,4 +11,5 @@ before_script:
   - echo "DATABASES['default']['PASSWORD'] = None" >> mysite/mysite/settings.py
   - python mysite/manage.py migrate --noinput
 script:
-  - python mysite/manage.py test
+  - cd mysite
+  - python manage.py test
