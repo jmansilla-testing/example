@@ -1,12 +1,21 @@
 language: python
-services:
-  - postgresql
 python:
   - 2.7
+addons:
+  - firefox: "29.0"  
+services:
+  - postgresql
+  - selenium
+env:
+  global:
+    - DISPLAY=:99.0
 install:
   - pip install -r requirements.txt
+  - easy_install chromedriver
 before_script:
   - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage
+  - /etc/init.d/xvfb start
   - psql -c 'create database example_db;' -U postgres
   - echo "DATABASES['default']['USER'] = 'postgres'" >> mysite/mysite/settings.py
   - echo "DATABASES['default']['PASSWORD'] = None" >> mysite/mysite/settings.py
@@ -14,3 +23,5 @@ before_script:
 script:
   - cd mysite
   - python manage.py test --with-xunit --xunit-file=../shippable/testresults/nosetests.xml
+after_script:
+  - /etc/init.d/xvfb stop
