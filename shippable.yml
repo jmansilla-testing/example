@@ -9,6 +9,6 @@ before_script:
   - psql -c 'create database example_db;' -U postgres
   - echo "DATABASES['default']['USER'] = 'postgres'" >> mysite/mysite/settings.py
   - echo "DATABASES['default']['PASSWORD'] = NONE" >> mysite/mysite/settings.py
-  - python manage.py migrate --noinput
+  - python mysite/manage.py migrate --noinput
 script:
-  - python manage.py test
+  - python mysite/manage.py test
