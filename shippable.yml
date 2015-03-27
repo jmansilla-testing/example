@@ -18,7 +18,7 @@ before_script:
   - "chmod +x /home/shippable/bin/chromedriver"
   - "echo '#!/bin/bash' | sudo tee /usr/bin/google-chrome"
   - "echo 'exec /usr/bin/chrome --no-sandbox --disable-gpu \"$@\"' | sudo tee -a /usr/bin/google-chrome"
-  - "sudo chmod +x /usr/bin/google-chrome"    
+  - "sudo chmod +x /usr/bin/google-chrome"
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
   - /etc/init.d/xvfb start

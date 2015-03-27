@@ -63,9 +63,9 @@ class SeleniumChromeBaseTests(SeleniumBase):
         options = webdriver.ChromeOptions()
         options.add_experimental_option("excludeSwitches",
                                         ["ignore-certificate-errors"])
-        self.browser = webdriver.Chrome(
-            executable_path=CHROMEDRV_PATH,
-            chrome_options=options)
+        self.browser = webdriver.Chrome()
+            #executable_path=CHROMEDRV_PATH,
+            #chrome_options=options)
         self.browser.implicitly_wait(3)
         self.login_this_guy(uid=self.user.username, upwd=self.sample_password)
 
