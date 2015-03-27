@@ -79,12 +79,21 @@ class DumbTests(object):
 
     def test_dumb(self):
         self.browser.get('%s/%s/' % (self.live_server_url, 'admin'))
-        self.wait = UI.WebDriverWait(self.browser, 4)
+        self.wait = UI.WebDriverWait(self.browser, 1)
         self.wait.until(EC.visibility_of_element_located(
             (By.ID, 'user-tools'))
         )
         tools = self.browser.find_element_by_id('user-tools')
         self.assertIn(self.user.first_name, tools.text)
+
+    def test_dumb_2(self):
+        self.browser.get('%s/%s/' % (self.live_server_url, 'admin'))
+        self.wait = UI.WebDriverWait(self.browser, 1)
+        self.wait.until(EC.visibility_of_element_located(
+            (By.ID, 'user-tools'))
+        )
+        tools = self.browser.find_element_by_id('user-tools')
+        self.assertIn('Welcome', tools.text)
 
 
 class DumbFFxTests(DumbTests, SeleniumFirefoxBaseTests):
