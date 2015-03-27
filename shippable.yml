@@ -11,7 +11,7 @@ env:
     - DISPLAY=:99.0
 install:
   - pip install -r requirements.txt
-  - easy_install chromedriver
+  - easy_install chromedriver==2.14
 before_script:
   - "curl -o /tmp/chromedriver.zip -L http://chromedriver.storage.googleapis.com/2.14/chromedriver_linux64.zip"
   - "unzip /tmp/chromedriver.zip -d /home/shippable/bin"
